@@ -12,9 +12,9 @@
 <% @recipes.each do |r| %>
   <h1><%= link_to r.title, recipe_path(r.id) %></h1>
   <ul>
-    <li><%= r.recipe_type.name %></li>
+    <li><%= link_to r.recipe_type.name, recipe_type_path(r.recipe_type.id) %></li>
     <li><%= r.cuisine.name %></li>
     <li><%= r.difficulty %></li>
     <li><%= r.cook_time %> minutos</li>
-  </ul>
+  </ul>s
 <% end %>
