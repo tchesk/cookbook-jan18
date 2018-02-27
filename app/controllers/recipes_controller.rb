@@ -6,6 +6,8 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
+    @recipe_types = RecipeType.all
+    @cuisines = Cuisine.all
   end
 
   def create
@@ -19,9 +21,11 @@ class RecipesController < ApplicationController
     if @recipe.save
       redirect_to @recipe
     else
+      @recipe_types = RecipeType.all
+      @cuisines = Cuisine.all
       flash[:error] = "Você deve informar todos os dados da receita"
       render :new
-      end
+    end
   end
 
   def edit
@@ -34,10 +38,15 @@ class RecipesController < ApplicationController
                                                   :cook_time, :ingredients, :method,
                                                   :difficulty)
 
-    recipe = Recipe.find(id)
-    recipe.update(update_recipe_params)
+    @recipe = Recipe.find(id)
 
-    redirect_to recipe
+
+    if @recipe.update(update_recipe_params)
+      redirect_to @recipe
+    else
+      flash[:error] = 'Todos os campos devem estar preenchidos'
+      render :edit
+    end
 
   end
 end
