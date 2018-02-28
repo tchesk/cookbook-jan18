@@ -22,3 +22,4 @@
   <%@recipe_types.each do |type|%>
     <h1><%=link_to type.name, recipe_type_path(type)%></h1>
   <%end%>
+<%=link_to "Cadastrar Cozinha", new_cuisine_path %>

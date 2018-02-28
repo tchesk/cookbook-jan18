@@ -1,7 +1,11 @@
-<%= flash[:erro] %>
+<%= flash[:error] %>
+
+<% @cuisine.errors.full_messages.each do |message| %>
+ <%= message %>
+<% end %>
 
 <%= form_for @cuisine do |f| %>
   <%= f.label :name, "Nome" %>
   <%= f.text_field :name %>
-  <%= f.submit "Enviar"%>
-<%end%>
+  <%= f.submit "Enviar" %>
+<% end %>
