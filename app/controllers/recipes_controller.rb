@@ -56,4 +56,11 @@ class RecipesController < ApplicationController
    redirect_to root_path
   end
 
+  def search
+    @search = Recipe.where("title = '#{params[:search]}'")
+
+
+
+  end
+
 end

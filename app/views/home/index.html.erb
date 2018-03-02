@@ -23,3 +23,9 @@
     <h1><%=link_to type.name, recipe_type_path(type)%></h1>
   <%end%>
 <%=link_to "Cadastrar Cozinha", new_cuisine_path %>
+
+<%= form_tag(recipes_search_path, method: :get) do %>
+  <%= label_tag(:search, "Busca")%>
+  <%= text_field_tag(:search)%>
+  <%= submit_tag("Buscar")%>
+<% end %>
